@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class BackJoon_3052 {
+
 	public static void main(String[] args) {
         
 		Scanner sc = new Scanner(System.in);
@@ -19,5 +20,6 @@ public class Main {
 		
 		System.out.println(nums.size());
 
+	
 	}
 }
