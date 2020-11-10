@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class BackJoon_8958 {
+public class BaekJoon_8958 {
 	public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int length = sc.nextInt();

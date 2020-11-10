@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class BackJoon_3052 {
+public class BaekJoon_3052 {
 
 	public static void main(String[] args) {
         

@@ -4,11 +4,19 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		int[] alphabet = new int[26];
+		int times = sc.nextInt();
+
+		String result = "";
 		
-		for(int i = 0; i < alphabet.length; i++) {
-			alphabet[i] = -1;
-			System.out.println(alphabet[i]);
+		for(int i = 0; i < times; i++) {
+			
+			String input = sc.nextLine();
+			String[] inputArr = input.split("");
+			
+			for(int j = 0; j < Integer.parseInt(inputArr[0]); j++) {
+				
+			}
 		}
+		
 	}
 }
