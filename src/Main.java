@@ -1,45 +1,44 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
-		Scanner sc = new Scanner(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		int num = sc.nextInt();
-		sc.nextLine();
+		int input = Integer.parseInt(br.readLine());
+		//1.
+		int temp = input;
+		int count = 0;
 		
-		String test = "";
-		boolean isDupl = false;
-		int result = 0;
-		
-		for(int i = 0; i < num; i++) {
-			String input = sc.nextLine();
-			String[] inputArr = input.split("");
-			
-			if(inputArr.length==1) {
-				result++;
-			}
-			
-			for(int j = 1; j < inputArr.length; j++) {
-				
-				
-				if(!inputArr[j-1].equals(inputArr[j])) {
-					if(test.contains(inputArr[j])) {
-						isDupl = true;
-					} else {
-						test += inputArr[j-1];
-					}
-				}
-				
-				if(j == (inputArr.length-1) && isDupl == false) {
-					result++;
-				}
-			}
-			test = "";
-			isDupl = false;
+		if(input < 5 && input != 3) {
+			System.out.println("-1");
+			return;
+		} else if(input == 3) {
+			System.out.println("1");
 		}
-		System.out.println(result);
+
+		while(temp >= 5) {
+			count += temp/5;
+			temp %= 5;
+			if(temp == 1 || temp == 4) {
+				temp += 5;
+				count--;
+			} else if(temp == 2) {
+				temp += 10;
+				count -= 2;
+			}
+			
+			if(temp == 3 || temp == 6 || temp == 9 || temp == 12) {
+				while(temp != 0) {
+					temp -= 3;
+					count++;
+				}
+			}
+		}
 		
+		System.out.println(count);
 	}
 }
 
