@@ -8,32 +8,38 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int input = Integer.parseInt(br.readLine());
 		
-		double input2= input-1.0;
+		int deno = 3; //분모
+		int num = 1; //분자
 		
-		int test = 1;
-		int temp = 0;
-		int count = 1;
+		int temp1 = input-3;
+		int temp2 = input-1;
 		
-		if(input == 1) {
-			System.out.println("1");
-			return;
-		} else if(input > 1 && input < 6) {
-			System.out.println("2");
-			return;
-		}
-		
-		for(int i = 0; i <= input; i++) {
-			if(temp < (input2/6) && (i+1) >= (input2/6)) {
-				
-				//System.out.println(temp + " < n <= " + (i+1));
-				System.out.println(count+1);
+		while(true) {
+			if(input <= 3) {
+				break;
+			} else if(input-4 > deno) {
+				deno += 4;
+				temp1 -= 4;
+				System.out.println("deno : " + deno + ", temp : " + temp1);
+			} else {
+				break;
 			}
-			temp = (i+1);
-			i += test;
-			test++;
-			count++;
+			
 		}
 		
+		while(true) {
+			if(input <= 1) {
+				break;
+			} else if(input-4 > num) {
+				num += 4;
+				temp2 -= 4;
+				System.out.println("num : " + num + ", temp : " + temp2);
+			} else {
+				break;
+			}
+			
+		}
+		System.out.println(num+"/"+deno);
 	}
 }
 
