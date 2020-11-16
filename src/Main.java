@@ -4,42 +4,22 @@ import java.io.InputStreamReader;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int input = Integer.parseInt(br.readLine());
+		String[] input = br.readLine().split(" ");
 		
-		int deno = 3; //분모
-		int num = 1; //분자
+		int A = Integer.parseInt(input[0]);
+		int B = Integer.parseInt(input[1]);
+		int V = Integer.parseInt(input[2]);
+		int R = 0;
+		int count = 0;
 		
-		int temp1 = input-3;
-		int temp2 = input-1;
-		
-		while(true) {
-			if(input <= 3) {
-				break;
-			} else if(input-4 > deno) {
-				deno += 4;
-				temp1 -= 4;
-				System.out.println("deno : " + deno + ", temp : " + temp1);
-			} else {
-				break;
-			}
-			
+		R = A - B;
+		while(R != V) {
+			R += (A - B);
+			count++;
 		}
 		
-		while(true) {
-			if(input <= 1) {
-				break;
-			} else if(input-4 > num) {
-				num += 4;
-				temp2 -= 4;
-				System.out.println("num : " + num + ", temp : " + temp2);
-			} else {
-				break;
-			}
-			
-		}
-		System.out.println(num+"/"+deno);
+		System.out.println(count);
 	}
 }
 
