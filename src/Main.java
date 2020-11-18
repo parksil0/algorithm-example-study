@@ -7,26 +7,32 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int length = Integer.parseInt(br.readLine());
 		
+		int member = 1;
+		int increment = 0;
+		
 		for(int i = 0; i < length; i++) {
-			String[] input = br.readLine().split(" ");
-			int h = Integer.parseInt(input[0]);
-			int w = Integer.parseInt(input[1]);
-			int num = Integer.parseInt(input[2]);
+			int floor = Integer.parseInt(br.readLine());
+			int num = Integer.parseInt(br.readLine());
+
+			increment = floor + 1;
 			
-			int count = (int)(Math.ceil((double)num / (double)h));
-			int floor = num % h;
-			
-			if(num % h == 0) {
-				floor = h;
-			} else {
-				floor = num % h;
-			}
-			
-			if(count < 10) {
-				System.out.println(floor + "0"+ count);
-			} else {
-				System.out.println(floor + "" + count);
+			for(int j = 0; j < num; j++) {
+				if(floor == 0) {
+					member = num;
+					break;
+				} else {
+					if(j == 0) {
+						member = 1;
+						System.out.println(member);
+					} else {
+						member += increment;
+						increment += floor + (floor-1);
+						System.out.println(member);
+						
+					}
+				}
 			}
 		}
+		System.out.println(member);
 	}
 }
