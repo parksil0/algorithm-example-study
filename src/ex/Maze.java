@@ -41,13 +41,20 @@ public class Maze {
 	}
 	
 	public static void main(String[] args) {
+		System.out.println("before ");
 		printMaze();
 		findMazePath(0, 0);
+		System.out.println("\nafter");
 		printMaze();
 	}
 
 	private static void printMaze() {
-		System.out.println("°æ·Î");
+		for(int i = 0; i < maze.length; i++) {
+			for(int j = 0; j < maze.length; j++) {
+				System.out.print(maze[i][j] + " ");
+			}
+			System.out.println();
+		}
 	}
 /*
  * sudo code
