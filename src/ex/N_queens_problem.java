@@ -5,18 +5,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class N_queens_problem {
-	static int N = 0;
-	static int[] cols = new int[N+1];
+	private int N = 0;
+	private int[] cols;
 	
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		System.out.print("number N : ");
-		N = Integer.parseInt(br.readLine());
-		System.out.println(N);
-		queens(0);
+	public N_queens_problem(int n, int[] cols) {
+		N = n;
+		this.cols = cols;
 	}
 	
-	public static boolean queens(int level) {
+	private boolean queens(int level) {
 		if(!promising(level)) {
 			return false;
 		}
@@ -36,7 +33,7 @@ public class N_queens_problem {
 		}
 	}
 	
-	public static boolean promising(int level) {
+	private boolean promising(int level) {
 		for(int i = 1; i < level; i++) {
 			if(cols[i] == cols[level]) {
 				return false;
@@ -45,5 +42,17 @@ public class N_queens_problem {
 			}
 		}
 		return true;
+	}
+	
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		System.out.print("number N : ");
+		int N = Integer.parseInt(br.readLine());
+		
+		int[] cols = new int[N+1];
+		N_queens_problem test = new N_queens_problem(N, cols);
+		
+		test.queens(0);
 	}
 }
