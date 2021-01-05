@@ -1,43 +1,44 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class BOJ_1011 {
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		long length = Long.parseLong(br.readLine());
-		
-		long k = 1;
-		long count = 0;
-		
-		for(long i = 0; i < length; i++) {
-			String[] input = br.readLine().split(" ");
-		
-			long start = 0;
-			long end = Long.parseLong(input[1]) - Long.parseLong(input[0]);
+	public static void main(String[] args) {
+		int cnt = 0;
+		int cal = 1;
 
-			while(true) {
-				
-				if(end - start <= 0) {
-					if(start - end > k) {
-						count--;
-						break;
-					}
-					break;
-				} else if(end - start >= k-2 && end - start <= k) {
-					count++;
+		Scanner sc = new Scanner(System.in);
+		int length = Integer.parseInt(sc.nextLine());
+		for(int i = 1; i <= length; i++) {
+
+			String[] inputArr = sc.nextLine().split(" ");
+			int num = Integer.parseInt(inputArr[1]) - Integer.parseInt(inputArr[0]);
+
+			while(num > 0) {
+				if(num - cal >= 0) {
+					num -= cal;
+				} else if (num > 0){
+					cnt++;
 					break;
 				} else {
-					start += k;
-					end -= k;
-					k++;
-					count += 2;
+					break;
 				}
-				
+				cnt++;
+				if(num - cal >= 0) {
+					num -= cal;
+				} else if(num > 0){
+					cnt++;
+					break;
+				} else {
+					break;
+				}
+				cnt++;
+				cal++;
 			}
-			System.out.println(count);
-			k = 1;
-			count = 0;
+			System.out.println(cnt);
+			cnt = 0;
+			cal = 1;
 		}
 	}
 }
