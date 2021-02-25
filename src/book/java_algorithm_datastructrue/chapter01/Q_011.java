@@ -1,4 +1,4 @@
-package book.java_algorithm_datastructrue;
+package book.java_algorithm_datastructrue.chapter01;
 
 import java.util.*;
 import java.io.*;
