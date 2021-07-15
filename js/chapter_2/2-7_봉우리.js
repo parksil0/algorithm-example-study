@@ -17,58 +17,35 @@
 */
 
 function solution(arr) {
-  let execArr = Array.from(arr);
+  let result = 0;
+  const dx = [0, 1, 0, -1];
+  const dy = [1, 0, -1, 0];
 
   for (let i = 0; i < arr.length; i++) {
-    execArr[i].unshift(0);
-    execArr[i].push(0);
-  }
+    for (let j = 0; j < arr.length; j++) {
+      let flag = true;
 
-  execArr.unshift(Array.from({length: arr.length+2}, (value) => value = 0 ));
-  execArr.push(Array.from({length: arr.length+2}, (value) => value = 0 ));
+      for (let k = 0; k < dx.length; k++) {
+        const nx = i + dx[k];
+        const ny = j + dy[k];
 
-  let countArr = Array.from({length: execArr.length}, () => Array(execArr.length).fill(false));
-
-  for (let i = 1; i < arr.length+1; i++) {
-    
-    for (let j = 1; j < arr.length+1; j++) {
-      const comparisonArr = [0, execArr[i-1][j], 0, execArr[i][j-1], execArr[i][j], execArr[i][j+1], 0, execArr[i+1][j], 0]; 
-      const max = Math.max(...comparisonArr);
-
-      let idx = comparisonArr.indexOf(max);
-      while(idx !== -1) {
-        // console.log("i idx:",Math.floor(idx/3) + i - 1,"j idx:", getIdx(idx) + j - 1, "value:", max);
-        countArr[i + Math.floor(idx/3) - 1][j + getIdx(idx) - 1] = true;
-        idx = comparisonArr.indexOf(max, idx+1);
+        if (nx >= 0 && nx < arr.length && ny >= 0 && ny < arr.length && arr[nx][ny] >= arr[i][j]) {
+          flag = false;
+          break;
+        }
       }
-      
+      if (flag) result++;
     }
   }
 
-  let count = 0;
-
-  countArr.forEach((arr) => {
-    arr.forEach((item) => {
-      if (item === true) count++;
-    })
-  })
-
-  // console.log(countArr);
-  
-  return count;
+  return result;
 }
 
-function getIdx(idx) {
-  while(idx > 2) {
-    idx -= 3;
-  }
-
-  return idx;
-}
-
-let arr=[[5, 3, 7, 2, 3], 
-          [3, 7, 1, 6, 1],
-          [7, 2, 5, 3, 4],
-          [4, 3, 6, 4, 1],
-          [8, 7, 3, 5, 2]];
+let arr = [
+  [5, 3, 7, 2, 3],
+  [3, 7, 1, 6, 1],
+  [7, 2, 5, 3, 4],
+  [4, 3, 6, 4, 1],
+  [8, 7, 3, 5, 2],
+];
 console.log(solution(arr));
